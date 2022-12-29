@@ -57,7 +57,9 @@ const { exists } = require('../models/userSchema.js')
 
             res.cookie('myShop',token,{
                 expires:new Date(Date.now() +258920000),
-                httpOnly:true
+                httpOnly:true,
+                sameSite: 'None', 
+                secure: true
             })
 
             if(!comparePassword){
