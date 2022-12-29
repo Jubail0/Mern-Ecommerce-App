@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.post('/addToCart', verifyToken,isUser,addToCart)
 router.post('/cart_product_quan', verifyToken,isUser,cartQuantityUpdate )
-router.get('/cart', verifyToken,isUser,getCartItems)
+router.get('/cart', verifyToken,getCartItems)
 router.delete('/cart/:id', verifyToken,isUser,deleteCartItems )
 
 
