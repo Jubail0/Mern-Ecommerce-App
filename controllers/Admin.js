@@ -218,7 +218,7 @@ const addproduct = async(req,res)=>{
   const img = req.file?.path
  
   try {  
-  if(!name || !price || !category || !subCategory || !stocks || !desc || (subCategory === 'select') ||( category === 'select' )){
+  if(!name || !price || !category || !subCategory || !stocks || !desc || !img || (subCategory === 'select') ||( category === 'select' )){
     return res.status(422).json({err:"Fields cannot be empty"})
   }
   
