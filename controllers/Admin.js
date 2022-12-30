@@ -280,9 +280,9 @@ const addproduct = async(req,res)=>{
 
   const productAdded = new Products(fields)
 
-  const saveProduct = await productAdded.save()
+//   const saveProduct = await productAdded.save()
 
-  if(saveProduct){
+  if(productAdded){
     return res.status(200).json({message:"Product created successfully"})
 
   }else{
