@@ -235,12 +235,7 @@ const addproduct = async(req,res)=>{
   const existProducts = await Products.findOne({name:name,desc:desc})
   if(existProducts){
 
-   const checkImageExists = await cloudinary.api.resource(existProducts.img.image_id,  {type:"upload"});
 
-   if(checkImageExists){
-    return res.status(422).json({err:"Product Image already added"})
-
-   }
     return res.status(422).json({err:"Product already added"})
 
   }
