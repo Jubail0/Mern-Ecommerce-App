@@ -140,7 +140,7 @@ try {
                         }
 
 
-      const updateDetails = await User.updateOne({_id:ID},
+      const updateDetails = await User.findByIdAndUpdate({_id:ID},
               {
                   $set: updates
               
