@@ -127,17 +127,19 @@ try {
             img,{folder:'userProfile'
            
         })
-           
-               updates.name = name;
-               updates.email = email;
-               updates.img = {
+            updates.img = {
                            image_id: imageDetails.public_id,
                            imageUrl: imageDetails.secure_url,
                            imagePath: img
                          }
+             }
+ 
+               updates.name = name;
+               updates.email = email;
+             
             
        
-                        }
+                      
 
 
       const updateDetails = await User.findByIdAndUpdate({_id:ID},
