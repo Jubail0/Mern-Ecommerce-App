@@ -3,7 +3,7 @@ const app = express();
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const history = require('connect-history-api-fallback');
+
 
 
 
@@ -19,7 +19,7 @@ app.use(cors({
     origin:`${process.env.BASE_URL}`,
     methods:["GET","POST","PATCH","DELETE"]
 }))
-app.use(history());
+
 app.use(express.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: '50mb' }))
