@@ -392,11 +392,11 @@ const deleteSingleProduct = async(req,res)=>{
 try {
   
 
-const productId = req.params.id?.toString()
+const productId = req.params?.id?.toString()
 
 const findProductById = await Products.findOne({_id:productId})
-const imageId = findProductById?.img.image_id
-const imagePath = findProductById?.img.imagePath
+const imageId = findProductById?.img?.image_id
+const imagePath = findProductById?.img?.imagePath
 
 
  fs.unlink(imagePath,(err)=>{
