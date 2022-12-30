@@ -350,10 +350,11 @@ const updateSingleProduct = async(req,res)=>{
 //     return res.status(422).json({err:"Product already added"})
 
 //   }
- 
+ if(img){
   const result2 = await cloudinary.uploader.upload(img,{
     folder:'Updatedimages'
   })
+  }
 
 
   let fields = {
