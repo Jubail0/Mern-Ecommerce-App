@@ -245,7 +245,9 @@ const addproduct = async(req,res)=>{
 
   }
 
- 
+  const result = await cloudinary.uploader.upload(img,{
+    folder:'images'
+  })
 
   let fields = {
     name:name,
@@ -276,9 +278,7 @@ const addproduct = async(req,res)=>{
     fields.size = sizeArr
   }
    
- const result = await cloudinary.uploader.upload(img,{
-    folder:'images'
-  })
+
   const productAdded = new Products(fields)
 
   const saveProduct = await productAdded.save()
