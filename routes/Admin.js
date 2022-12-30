@@ -27,7 +27,7 @@ const { verifyToken, isAdmin } = require("../middleware/authenticate")
 
 
 // Dashboard
-router.get('/admin/dasboards',verifyToken,isAdmin,verifydashboardData)
+router.get('/admin/dasboards',verifyToken,isAdmin,dashboardData)
 // Orders
 router.get('/admin/orders',verifyToken,isAdmin,ordersData)
 router.get('/admin/orders/:id',verifyToken,isAdmin,singleOrderData)
