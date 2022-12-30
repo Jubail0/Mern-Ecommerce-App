@@ -65,13 +65,13 @@ const getproductsByCategory = async (req, res) => {
     }
 
   res.status(200).json({
-    productPerPage:productPerPage,
-    totalProductsPerPage:totalproductsPerPage,
-    totalProducts:totalProducts,
-    totalPages:totalPages,
-    categoryLength:categoryLength,
-    sortedPrice:sortedPrice,
-    getSubCat:getSubCat
+    "productPerPage":productPerPage,
+    "totalProductsPerPage":totalproductsPerPage,
+    "totalProducts":totalProducts,
+    "totalPages":totalPages,
+    "categoryLength":categoryLength,
+    "sortedPrice":sortedPrice,
+    "getSubCat":getSubCat
 })
 }
 
