@@ -15,10 +15,7 @@ app.use(function(req, res, next) {
 
 dotenv.config({path:'../backend/config.env'})
 require('./DB/conn.js')
-app.use(cors({
-    origin:`${process.env.BASE_URL}`,
-    methods:["GET","POST","PATCH","DELETE"]
-}))
+app.use(cors())
 
 app.use(express.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
