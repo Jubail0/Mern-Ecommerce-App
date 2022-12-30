@@ -414,15 +414,15 @@ const imagePath = findProductById?.img?.imagePath
 
 
 
-const findandDelete = await Products.deleteOne({_id:productId})
+const findandDelete = await Products.findByIdAndDelete({_id:productId})
 
   if(findandDelete){
     
     const getProducts = await Products.find({})
-    res.status(200).json({getProducts,success:"Item deleted successfully"})
+   return res.status(200).json({getProducts,success:"Item deleted successfully"})
 
   }else{
-    res.status(500).json({err:"Server Error"})
+   return res.status(500).json({err:"Server Error"})
 
   }
 } catch (error) {
