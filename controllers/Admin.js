@@ -48,26 +48,6 @@ const fs = require('fs')
     const getNewUsers = await User.find({role:"user"}).limit(limit)
     const newUserDetails = getNewUsers?.map((user)=>{return {name:user.name,email:user.email}})
 
-// get top selling Products
-// const topProducts = await Orders.aggregate([
-//   {
-//     "$unwind":"$orderItems.products"
-//   },
-//   {
-//     "$group":{
-//       "_id":"$orderItems.products.productDetails.name",
-//       "qty":{"$sum":"$orderItems.products.quantity"}
-//     }
-//   },
-//   {
-//     "$group":{
-//       "_id":null,
-//       "top_selling_products":{
-//         $push:{"product_name":"$_id","sold":"$qty"}
-//       }
-//     }
-//   }
-// ])
 const topProducts = await Products.find().sort({sold:-1}).limit(5);
 
 // get all transactions
@@ -194,7 +174,7 @@ if(text){
 // Delete Order
 
 const delete_Single_orderInfo = async(req,res)=>{
-const orderId = req.params.id?.toString()
+const orderId = req.params?.id?.toString()
 
 const delete_single_orderInfo = await Orders.deleteOne({_id:orderId})
 
