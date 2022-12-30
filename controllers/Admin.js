@@ -333,23 +333,23 @@ const updateSingleProduct = async(req,res)=>{
   const {name,price,stocks,desc,}=req.body
   const img = req.file?.path
   
-  if(!name || !price || !stocks || !desc || !img){
+  if(!name && !price && !stocks && !desc && !img ){
     return res.status(422).json({err:"Fields cannont be empty"})
 
   }
  
-  const existProducts = await Products.findOne({name:name,desc:desc})
-  if(existProducts){
+//   const existProducts = await Products.findOne({name:name,desc:desc})
+//   if(existProducts){
 
-   const checkImageExists = await cloudinary.api.resource(existProducts.img.image_id,  type= "upload");
+//    const checkImageExists = await cloudinary.api.resource(existProducts.img.image_id,  type= "upload");
 
-   if(checkImageExists){
-    return res.status(422).json({err:"Product Image already added"})
+//    if(checkImageExists){
+//     return res.status(422).json({err:"Product Image already added"})
 
-   }
-    return res.status(422).json({err:"Product already added"})
+//    }
+//     return res.status(422).json({err:"Product already added"})
 
-  }
+//   }
  
   const result2 = await cloudinary.uploader.upload(img,{
     folder:'Updatedimages'
