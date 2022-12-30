@@ -224,11 +224,11 @@ const addproduct = async(req,res)=>{
   
  
 
-  if((category === 'men' || category === 'women') && !size){
+  if((category === 'men' || category === 'women') && !size || size === []){
     return res.status(422).json({err:"Size field cannot be empty"})
   }
 
-  if(category === 'mobile' && !storage){
+  if(category === 'mobile' && !storage  || storage === []){
     return res.status(422).json({err:"Storage field cannot be empty"})
   }
   
@@ -245,9 +245,7 @@ const addproduct = async(req,res)=>{
 
   }
 
-  const result = await cloudinary.uploader.upload(img,{
-    folder:'images'
-  })
+ 
 
   let fields = {
     name:name,
@@ -277,7 +275,10 @@ const addproduct = async(req,res)=>{
     const sizeArr = size.split(',')
     fields.size = sizeArr
   }
-
+   
+ const result = await cloudinary.uploader.upload(img,{
+    folder:'images'
+  })
   const productAdded = new Products(fields)
 
   const saveProduct = await productAdded.save()
