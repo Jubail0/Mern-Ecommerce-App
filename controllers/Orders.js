@@ -93,6 +93,7 @@ const getKey = (req,res)=>{
 // create razorpay Order
 
 const createRazorPay_order =async(req,res)=>{
+    try{
     const currency = 'INR'
    
 
@@ -119,6 +120,8 @@ const createRazorPay_order =async(req,res)=>{
    
     res.status(200).json(orderCreated)
    }
+}} catch (error){
+ console.log(error)   
 }
 
 }
@@ -126,6 +129,7 @@ const createRazorPay_order =async(req,res)=>{
 // Verify RazorPay Order
 
 const verifyRazorPay_order = async(req,res)=>{
+    try{
     const {razorpayPaymentId,razorpayOrderId,razorpaySignature,amount} = req.body
     const {fullName,
         address1,
@@ -191,7 +195,9 @@ const verifyRazorPay_order = async(req,res)=>{
     else{
         res.status(500).json({err:"Payment failed"})
     }
-    
+    } catch (error){
+        console.log(error)
+    }
     
     
     }
