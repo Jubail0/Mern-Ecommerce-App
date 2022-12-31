@@ -228,7 +228,7 @@ const addproduct = async(req,res)=>{
     return res.status(422).json({err:"Size field cannot be empty"})
   }
 
-  if(category === 'mobile' && !storage || storage === undefined){
+  if((category === 'mobile' && !storage) || storage === undefined){
     return res.status(422).json({err:"Storage field cannot be empty"})
   }
   
